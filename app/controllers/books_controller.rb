@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
   def index
+    @user = current_user
     # 新規投稿用
     @book = Book.new
     # 一覧表示用
@@ -26,7 +27,9 @@ class BooksController < ApplicationController
   end
 
   def show
+    @user = current_user
     @book = Book.find(params[:id])
+    # @book_new = Book.new
   end
 
   def destroy
