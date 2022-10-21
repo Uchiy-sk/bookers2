@@ -1,3 +1,14 @@
+<div>
+  <% if @book.errors.any? %>
+  <h3><%= @book.errors.count %> erros prohibited this obj from being saved:</h3>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+
 <!-- 編集フォーム -->
 <h1>Editing book</h1>
   <%= form_with model: @book do |f| %>
