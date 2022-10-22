@@ -9,14 +9,26 @@
 <% end %>
 </div>
 
-<!-- 編集フォーム -->
-<h1>Editing book</h1>
-  <%= form_with model: @book do |f| %>
-    <h4>title</h4>
-      <%= f.text_field :title %>
-    <h4>body</h4>
-      <%= f.text_area :body %>
-    <%= f.submit 'Update Book' %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <!-- 編集フォーム -->
+      <h1>Editing Book</h1>
+      <%= form_with model: @book do |f| %>
+        <div class="form-group">
+          <label for="book_title">Title</label></br>
+          <%= f.text_field :title, autofocus: true, id:"inputtitle", class:"form-control book_title" %>
+        </div>
+        <div class="form-group">
+          <label for="book_opinion">Opinion</label></br>
+          <%= f.text_area :body, rows: 2, autofocus: true, id:"body", class:"form-control book_body" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update Book", class:"btn btn-success" %>
+        </div>
+      <% end %>
 
-    <p><%= link_to "Show", book_path(@book.id) %> | <%= link_to "Back", books_path %></p>
-  <% end %>
+      <p><%= link_to "Show", book_path(@book.id) %> | <%= link_to "Back", books_path %></p>
+    </div>
+  </div>
+</div>

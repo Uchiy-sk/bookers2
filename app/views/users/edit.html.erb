@@ -9,19 +9,27 @@
 <% end %>
 </div>
 
-<h2>User info</h2>
-<%= form_with model: @user do |f| %>
-  <div>
-    <label for="Name">Name</label></br>
-    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+      <%= form_with model: @user do |f| %>
+        <div class="form-group">
+          <label for="user_name">Name</label></br>
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+        </div>
+        <div class="form-group">
+          <label for="user_image">Image</label></br>
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class:"form-control-file user_image" %>
+        </div>
+        <div class="form-group">
+          <label for="user_introduction">introduction</label></br>
+          <%= f.text_area :introduction, rows: 2, autofocus: true, id:"introduction", placeholder:"自己紹介文", class:"form-control introduction" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update User", class:"btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <label for="inputImage">Image</label></br>
-    <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-  </div>
-  <div>
-    <label for="introduction">introduction</label></br>
-    <%= f.text_area :introduction, autofocus: true, id:"introduction", placeholder:"自己紹介文" %>
-  </div>
-  <div><%= f.submit "Update User" %></div>
-<% end %>
+</div>
