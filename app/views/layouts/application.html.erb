@@ -14,9 +14,9 @@
     <header>
       <div class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <%= link_to(root_path, class:"navbar-brand") do %>
+          <a class="navbar-brand" href="/">
             <span>Bookers</span>
-          <% end %>
+          </a>
           <div class="navbar-collapse collapse show" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
@@ -60,7 +60,7 @@
                 <li>
                   <%= link_to(new_user_registration_path, class:"nav-link text-light") do %>
                     <i class="fas fa-user-plus"></i>
-                    Sign Up
+                    Sign up
                   <% end %>
                 </li>
                 <li>
@@ -76,7 +76,7 @@
       </div>
     </header>
     <main>
-      <%= flash[:notice] %></br>
+      <p id="notice"><%= flash[:notice] %></p>
       <%= yield %>
     </main>
     <footer>
