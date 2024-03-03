@@ -6,7 +6,13 @@ class BooksController < ApplicationController
     # 新規投稿用
     @book = Book.new
     # 一覧表示用
-    @books = Book.all
+    books = Book.all
+    # いいね順に並び替え
+    from = 1.week.ago.beginning_of_day
+    to = Time.current.end_of_day
+    @books = books.sort_by {
+      |book| -book.favorites.where(created_at: from...to).count
+    }
   end
 
   def create
