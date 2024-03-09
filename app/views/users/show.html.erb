@@ -1,8 +1,27 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'info', user: @user %>
-      <%= render 'books/new', book: @book %>
+      <div>
+        <%= render 'info', user: @user %>
+      </div>
+      <!--chatへのリンク作成-->
+      <div>
+        <% if (current_user.following?(@user)) && (@user.following?(current_user)) %>
+          <% if @is_room == true %>
+            <%= link_to "チャットへ移動する", room_path(@room_id), class: "btn btn-outline-secondary btn-block user-show-room" %>
+          <% else %>
+            <%= form_with model: @room, local:true do |f| %>
+              <%= f.fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, value: @user.id %>
+              <% end %>
+              <%= f.submit "チャットを始める", class: "btn btn-outline-secondary btn-block user-show-chat" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+        <%= render 'books/new', book: @book %>
+      </div>
     </div>
     <div class="col-md-8 offset-md-1">
       <!-- Books フォーム -->
