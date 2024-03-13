@@ -1,0 +1,20 @@
+<h4>検索結果</h4>
+投稿数: <%= search_books.count %>
+  <table class='table table-bordered'>
+    <thead>
+      <tr>
+        <th>投稿者</th>
+        <th>タイトル</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% search_books.each do |book| %>
+      <tr>
+        <td><%= book.user.name %></td>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

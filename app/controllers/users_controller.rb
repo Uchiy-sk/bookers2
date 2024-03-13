@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    
+
     # 投稿数取得
     @today_book =  @books.created_today
     @yesterday_book = @books.created_yesterday
@@ -30,6 +30,16 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
     else
       render :edit
+    end
+  end
+
+  def search
+    @user = User.find(params[:user_id])
+    @books = @user.books
+    @book = Book.new
+    @created = params[:created_at]
+    if @created != ""
+      @search_books = @books.where(['created_at LIKE ?', "#{@created}%"])
     end
   end
 

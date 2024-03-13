@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
-  resources :users, only: [:index, :edit, :show, :update]
+  resources :users, only: [:index, :edit, :show, :update] do
+    get "search" => 'users#search'
+  end
 end
