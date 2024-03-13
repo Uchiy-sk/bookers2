@@ -44,6 +44,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @book.increment!(:view_count)   # 覧数を加算
     @user = @book.user
     @comment = BookComment.new
   end

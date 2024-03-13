@@ -46,7 +46,8 @@
                 <% end %>
               </td>
             <% end %>
-            <td><%= "コメント数：#{book.book_comments.count}" %><td>
+            <td>閲覧数: <%= book.view_count %></td>
+            <td>コメント数：<%= book.book_comments.count %><td>
           </tr>
           <% end %>
         </tbody>
