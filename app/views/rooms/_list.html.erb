@@ -1,0 +1,7 @@
+<div id="list_<%= message.id %>">
+  <p>
+    <%= message.user.name + "  "%>
+    <%= message.message %>
+    <%= link_to "削除", message_path(message.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm ml-2", remote: true %>
+  </p>
+</div>
