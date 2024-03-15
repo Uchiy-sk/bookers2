@@ -1,6 +1,6 @@
 class Group < ApplicationRecord
   has_many :group_users, dependent: :destroy
-  has_many :users, through: :group_users
+  has_many :users, through: :group_users, source: :user
   belongs_to :owner, class_name: 'User'
 
   # ActiveStorage
@@ -14,5 +14,9 @@ class Group < ApplicationRecord
       group_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     group_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def joined_user?(user)
+    group_users.exists?(user_id: user.id)
   end
 end
