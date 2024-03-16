@@ -41,6 +41,18 @@ class GroupsController < ApplicationController
     end
   end
 
+  def new_mail
+    @group = Group.find(params[:group_id])
+  end
+
+  def send_event_mail
+    group = Group.find(params[:group_id])
+    @mail_title = params[:mail_title]
+    @mail_content = params[:mail_content]
+    # binding.pry
+    EventerMailer.send_mail(@mail_title, @mail_content, group).deliver!
+  end
+
   private
 
   def group_params
