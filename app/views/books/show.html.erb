@@ -40,13 +40,14 @@
                   <i class="fa-solid fa-heart"></i><%= @book.favorites.count %>
                 <% end %>
               </td>
-              <% else %>
+            <% else %>
               <td>
                 <%= link_to book_favorites_path(@book), method: :post do %>
                   <i class="fa-regular fa-heart"></i><%= @book.favorites.count %>
                 <% end %>
               </td>
             <% end %>
+            <td><%= render "static_rate", book: @book %></td>
             <td>コメント数：<%= @book.book_comments.count %></td>
           </tr>
         </tbody>

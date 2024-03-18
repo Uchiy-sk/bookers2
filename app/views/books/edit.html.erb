@@ -24,6 +24,7 @@
           <label for="book_opinion">Opinion</label></br>
           <%= f.text_area :body, rows: 2, autofocus: true, id:"body", class:"form-control book_body" %>
         </div>
+        <div><%= render "static_rate", book: @book %></div>
         <div class="form-group">
           <%= f.submit "Update Book", class:"btn btn-success" %>
         </div>

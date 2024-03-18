@@ -46,6 +46,7 @@
                 <% end %>
               </td>
             <% end %>
+            <td><%= render "static_rate", book: book %></td>
             <td><%= "コメント数：#{book.book_comments.count}" %><td>
           </tr>
           <% end %>
