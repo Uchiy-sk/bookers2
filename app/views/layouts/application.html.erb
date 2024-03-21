@@ -77,7 +77,12 @@
       </div>
     </header>
     <main>
-      <p id="notice"><%= flash[:notice] %></p>
+      <% if user_signed_in? %>
+　　    <%= render 'books/tag_form' %>
+      <% end %>
+      <% if flash[:notice].present? %>
+　　    <p id="notice" class="container px-5 px-sm-0"><%= flash[:notice] %></p>
+      <% end %>
       <%= yield %>
     </main>
     <footer>
