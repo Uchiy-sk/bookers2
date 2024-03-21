@@ -11,4 +11,7 @@ class Book < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  # 並び替え機能
+  scope :latest, -> {order(created_at: :desc)} # 昇順
+  scope :star_count, -> {order(star: :desc)}
 end

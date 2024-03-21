@@ -5,8 +5,15 @@ class BooksController < ApplicationController
     @user = current_user
     # 新規投稿用
     @book = Book.new
-    # 一覧表示用
-    @books = Book.all
+
+    # 並び替え機能
+    if params[:latest]
+      @books = Book.latest
+    elsif params[:star_count]
+      @books = Book.star_count
+    else
+      @books = Book.all
+    end
   end
 
   def create
