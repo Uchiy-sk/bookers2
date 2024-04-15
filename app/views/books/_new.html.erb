@@ -6,8 +6,12 @@
       <%= f.text_field :title, class:"form-control book_title" %>
     </div>
     <div class="form-group">
-      <label for="book_title">Opinion</label>
+      <label for="book_body">Opinion</label>
       <%= f.text_area :body, rows: 2, class:"form-control book_body" %>
+    </div>
+    <div class="form-group">
+      <label for="book_tag">Tag</label>
+      <%= f.text_area :tag_list, value: book.tag_list.join(','), class:"form-control book_tag" %>
     </div>
     <div class="form-group">
       <%= f.submit 'Create Book', class:"btn btn-success" %>

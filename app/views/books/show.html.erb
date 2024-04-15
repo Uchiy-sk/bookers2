@@ -30,6 +30,11 @@
             <td></td>
             <td><%= link_to @book.title, book_path(@book.id) %></td>
             <td><%= @book.body %></td>
+            <td>
+              <% @book.tag_list.each do |tag| %>
+                <%= link_to tag, books_path(tag_name: tag), class: "btn btn-sm btn-primary" %>
+              <% end %>
+            </td>
             <% if @book.user == current_user %>
               <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
               <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>

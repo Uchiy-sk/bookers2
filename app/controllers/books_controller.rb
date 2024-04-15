@@ -6,7 +6,12 @@ class BooksController < ApplicationController
     # 新規投稿用
     @book = Book.new
     # 一覧表示用
-    @books = Book.all
+    @tag = params[:tag_name]
+    if @tag
+      @books = Book.tagged_with("#{params[:tag_name]}") # タグ絞り込み機能
+    else
+      @books = Book.all
+    end
   end
 
   def create
@@ -52,7 +57,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :tag_list)
   end
 
   def correct_user
